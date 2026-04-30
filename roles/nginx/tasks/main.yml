@@ -1,0 +1,20 @@
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Deploy nginx site config
+  ansible.builtin.template:
+    src: site.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+    validate: "nginx -t -c %s"
+  notify: Reload Nginx
+
+- name: Deploy custom index page
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    mode: "0644"
+  notify: Reload Nginx

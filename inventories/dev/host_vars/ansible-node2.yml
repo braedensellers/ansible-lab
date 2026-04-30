@@ -1,0 +1,3 @@
+nginx_site_title: "Node 2 Site"
+extra_packages:
+  - net-tools

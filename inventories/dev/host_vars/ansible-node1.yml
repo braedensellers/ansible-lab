@@ -1,0 +1,4 @@
+nginx_site_title: "Node 1 Site"
+extra_packages:
+  - htop
+  - tree

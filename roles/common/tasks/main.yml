@@ -1,0 +1,25 @@
+- name: Install common packages
+  ansible.builtin.apt:
+    name: "{{ common_packages }}"
+    state: present
+    update_cache: true
+
+- name: Install extra packages if defined
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ extra_packages | default([]) }}"
+  when: extra_packages is defined
+
+- name: Display MOTD
+  ansible.builtin.template:
+    src: motd.j2
+    dest: /etc/motd
+    mode: "0644"
+
+- name: Create special file only on node1
+  ansible.builtin.copy:
+    dest: /tmp/node1-only.txt
+    content: "This only exists on node1"
+    mode: "0644"
+  when: inventory_hostname == "ansible-node1"

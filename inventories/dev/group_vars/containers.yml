@@ -1,0 +1,8 @@
+nginx_site_title: "Default Container Site"
+common_motd_message: "Managed by Ansible - Container Lab"
+
+common_packages:
+  - curl
+  - vim
+  - ca-certificates
+  - less

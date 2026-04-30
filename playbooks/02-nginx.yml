@@ -1,0 +1,7 @@
+- name: Configure nginx web servers
+  hosts: containers
+  become: true
+  gather_facts: true
+
+  roles:
+    - nginx
