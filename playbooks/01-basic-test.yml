@@ -7,13 +7,13 @@
 
   tasks:
     - name: Install nginx
-      apt:
+      ansible.builtin.apt:
         name: nginx
         state: present
         update_cache: true
 
     - name: Deploy custom index page
-      template:
+      ansible.builtin.template:
         src: index.html.j2
         dest: /var/www/html/index.html
         mode: "0644"
@@ -21,6 +21,6 @@
 
   handlers:
     - name: Reload nginx
-      service:
+      ansible.builtin.service:
         name: nginx
         state: reloaded
