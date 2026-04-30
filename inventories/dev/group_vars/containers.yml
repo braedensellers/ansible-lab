@@ -6,3 +6,7 @@ common_packages:
   - vim
   - ca-certificates
   - less
+
+users_lab_authorized_keys:
+  devuser:
+    - "ssh-rsa AAAA_REPLACE_WITH_ACTUAL_KEY devuser@lab"

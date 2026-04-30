@@ -5,10 +5,32 @@
 
 - name: Create lab users
   ansible.builtin.user:
-    name: "{{ item.name }}"
-    shell: "{{ item.shell }}"
-    groups: "{{ item.groups | join(',') }}"
+    name: "{{ user_account.name }}"
+    shell: "{{ user_account.shell }}"
+    groups: "{{ user_account.groups }}"
     append: true
     state: present
     create_home: true
   loop: "{{ users_lab_accounts }}"
+  loop_control:
+    loop_var: user_account
+
+- name: Create SSH directory for lab users
+  ansible.builtin.file:
+    path: "/home/{{ user_account.name }}/.ssh"
+    state: directory
+    owner: "{{ user_account.name }}"
+    group: "{{ user_account.name }}"
+    mode: "0700"
+  loop: "{{ users_lab_accounts }}"
+  loop_control:
+    loop_var: user_account
+
+- name: Deploy authorized keys for lab users
+  ansible.posix.authorized_key:
+    user: "{{ authorized_key_entry.key }}"
+    key: "{{ authorized_key_entry.value | join('\n') }}"
+    state: present
+  loop: "{{ users_lab_authorized_keys | default({}) | dict2items }}"
+  loop_control:
+    loop_var: authorized_key_entry
