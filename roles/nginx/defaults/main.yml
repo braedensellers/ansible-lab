@@ -1,1 +1,2 @@
 nginx_site_title: "Ansible Nginx Lab"
+nginx_remove_unmanaged_sites: true

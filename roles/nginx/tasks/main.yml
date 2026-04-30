@@ -56,3 +56,6 @@
     dest: /var/www/html/index.html
     mode: "0644"
   notify: Reload Nginx
+
+- name: Run nginx cleanup tasks
+  ansible.builtin.import_tasks: cleanup.yml
