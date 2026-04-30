@@ -9,3 +9,6 @@
 
     - role: nginx
       tags: nginx
+    
+    - role: users
+      tags: users

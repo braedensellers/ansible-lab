@@ -1,0 +1,7 @@
+users_lab_group: "developers"
+
+users_lab_accounts:
+  - name: "devuser"
+    shell: "/bin/bash"
+    groups:
+      - "{{ users_lab_group }}"

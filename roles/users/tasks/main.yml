@@ -1,0 +1,14 @@
+- name: Create lab group
+  ansible.builtin.group:
+    name: "{{ users_lab_group }}"
+    state: present
+
+- name: Create lab users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    groups: "{{ item.groups | join(',') }}"
+    append: true
+    state: present
+    create_home: true
+  loop: "{{ users_lab_accounts }}"
