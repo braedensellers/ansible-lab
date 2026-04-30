@@ -13,6 +13,15 @@
   loop_control:
     loop_var: site
 
+- name: Deploy vhost index pages
+  ansible.builtin.template:
+    src: vhost-index.html.j2
+    dest: "{{ site.root }}/index.html"
+    mode: "0644"
+  loop: "{{ nginx_sites }}"
+  loop_control:
+    loop_var: site
+
 - name: Deploy vhost configs
   ansible.builtin.template:
     src: vhost.conf.j2

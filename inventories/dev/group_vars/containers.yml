@@ -9,10 +9,12 @@ common_packages:
 
 nginx_sites:
   - name: site1
+    title: "Site 1"
     port: 8080
     root: /var/www/site1
   
   - name: site2
+    title: "Site 2"
     port: 8081
     root: /var/www/site2
 
