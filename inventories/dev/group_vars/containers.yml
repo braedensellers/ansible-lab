@@ -7,6 +7,15 @@ common_packages:
   - ca-certificates
   - less
 
+nginx_sites:
+  - name: site1
+    port: 8080
+    root: /var/www/site1
+  
+  - name: site2
+    port: 8081
+    root: /var/www/site2
+
 users_lab_authorized_keys:
   devuser:
     - "ssh-rsa AAAA_REPLACE_WITH_ACTUAL_KEY devuser@lab"
