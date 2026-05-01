@@ -21,3 +21,9 @@ nginx_sites:
 users_lab_authorized_keys:
   devuser:
     - "ssh-rsa AAAA_REPLACE_WITH_ACTUAL_KEY devuser@lab"
+
+firewall_allowed_tcp_ports:
+  - 22
+  - 80
+  - 8080
+  - 8081

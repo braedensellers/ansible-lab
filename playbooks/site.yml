@@ -7,8 +7,8 @@
     - role: common
       tags: common
 
-    - role: nginx
-      tags: nginx
-
     - role: users
       tags: users
+
+    - role: nginx
+      tags: nginx
