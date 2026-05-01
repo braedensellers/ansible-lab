@@ -12,6 +12,3 @@
 
     - role: nginx
       tags: nginx
-
-    - role: firewall
-      tags: firewall
